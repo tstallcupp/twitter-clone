@@ -6,6 +6,7 @@ const logger = require('morgan');
 //* require middleware (method-override etc.)
 const methodOverride = require('method-override');
 const session = require('express-session');
+const passport = require('passport');
 
 require('dotenv').config();
 require('./config/database');
@@ -32,6 +33,8 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 //* MOUNT ROUTES
 app.use('/', indexRouter);
