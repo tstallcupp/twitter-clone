@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 //* require middleware (method-override etc.)
 const methodOverride = require('method-override');
+const session = require('express-session');
 
 require('dotenv').config();
 require('./config/database');
@@ -26,6 +27,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 //* mount method-override to middleware pipeline
 app.use(methodOverride('_method'));
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: true
+}));
 
 //* MOUNT ROUTES
 app.use('/', indexRouter);
