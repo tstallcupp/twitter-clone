@@ -3,11 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+//* require middleware (method-override etc.)
+var methodOverride = require('method-override');
 
 require('dotenv').config();
 require('./config/database');
 
-//* ROUTES
+//* REQUIRE ROUTES
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -22,7 +24,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+//* mount method-override to middleware pipeline
+app.use(methodOverride('_method'));
 
+//* MOUNT ROUTES
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
