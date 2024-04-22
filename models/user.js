@@ -9,6 +9,7 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    // userName: String,
     email: String,
     avatar: String
 }, {

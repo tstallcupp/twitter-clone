@@ -1,4 +1,4 @@
-const post = require('../models/post');
+// const post = require('../models/post');
 const Post = require('../models/post');
 const User = require('../models/user');
 
@@ -8,13 +8,15 @@ module.exports = {
 }
 
 async function create(req, res) {
-    const post = new Post(req.body);
+    const { content } = req.body
     // assign the logged in user's id
-    post.author = req.user._id;
-    console.log('this is a post: ',post);
-    console.log('author: ', post.author);
     try {
-        await post.save();
+        await Post.create({
+            content,
+            author: req.user._id,
+            userName: req.user.name,
+            userAvatar: req.user.avatar
+        });
         res.redirect('posts');
     } catch(error) {
         console.log('Error creating a post: ', error);
@@ -24,6 +26,10 @@ async function create(req, res) {
 }
 
 async function index(req, res) {
-    const posts = await Post.find({});
-    res.render('posts/index', { title: 'AFTER LOGGING IN', posts});
+    try {
+        const posts = await Post.find({}).sort({ createdAt: -1 });
+        res.render('posts/index', { title: 'AFTER LOGGING IN', posts});
+    } catch (error) {
+        console.log('Error fetching posts: ', error);
+    }
 }
