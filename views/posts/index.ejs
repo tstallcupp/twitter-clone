@@ -1,5 +1,15 @@
 <%- include('../partials/header') %>
 
 <h2>TESTING HOME PAGE</h2>
+<form action="/posts" method="POST">
+    <textarea name="content" id="" cols="30" rows="10"></textarea><br>
+    <button type="submit">SUBMIT ME</button>
+</form>
+
+<% posts.forEach(function(post) { %>
+    <div>POST:</div>
+    <div><%= post.userName %></div>
+    <div><%= post.content %></div>
+<% }) %>
 
 <%- include('../partials/footer') %>
