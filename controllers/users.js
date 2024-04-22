@@ -14,7 +14,7 @@ async function index(req, res) {
             return res.status(404).send('USER NOT FOUND');
         }
         const userPosts = await Post.find({ author: userId });
-        res.render('users/index', { title: 'USER PROFILE', user, userPosts });
+        res.render('users/index', { title: 'USER PROFILE', user, posts: userPosts });
     } catch (error) {
         console.log('Error fetching user profile: ', error);
     }

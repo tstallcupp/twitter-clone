@@ -1,6 +1,15 @@
 <%- include('../partials/header') %>
 <div class="container">
     <h2>User Profile</h2>
+    <h3>Name: <%= user.name %></h3>
+
+    <h4>Previous Posts: </h4>
+    <% posts.forEach(function(post) { %>
+        <div>
+            <p><%= post.createdAt.toLocaleDateString() %></p>
+            <p><%= post.content %></p>
+        </div>
+    <% }) %>
 </div>
 
 <%- include('../partials/footer') %>
