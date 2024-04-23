@@ -86,6 +86,15 @@ article {
   display: grid;
   border: #424748 solid 3px;
 }
+
+.post {
+  width: 300px;
+  height: 70px
+}
+
+.post a {
+  color: #B95CF4;
+}
 /* 
 .container {
   display: grid;

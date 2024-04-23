@@ -3,7 +3,14 @@ const User = require('../models/user');
 
 module.exports ={
     index,
+    // show,
 }
+
+// async function show(req, res) {
+
+// }
+
+
 
 async function index(req, res) {
     try {

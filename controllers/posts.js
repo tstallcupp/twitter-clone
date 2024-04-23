@@ -3,7 +3,8 @@ const Post = require('../models/post');
 const User = require('../models/user');
 
 module.exports = {
-    index,
+    allPosts,
+    show,
     create,
 }
 
@@ -21,11 +22,24 @@ async function create(req, res) {
     } catch(error) {
         console.log('Error creating a post: ', error);
     }
-
-    // console.log('this is the content: ', content)
 }
 
-async function index(req, res) {
+async function show(req, res) {
+    try {
+        // find specific post
+        const post = await Post.findById(req.params.postId);
+        // console.log(req.params.id)
+        if (!post) {
+            return res.status(404).send('Post not found');
+        }
+        res.render('posts/show', { title: 'Post Detail', post })
+    } catch (error) {
+        console.log('Error fetching post', error)
+        res.status(500).send('Internal Server Error');
+    }
+};
+
+async function allPosts(req, res) {
     try {
         const posts = await Post.find({}).sort({ createdAt: -1 });
         res.render('posts/index', { title: 'AFTER LOGGING IN', posts});

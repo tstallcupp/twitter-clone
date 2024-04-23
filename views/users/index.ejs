@@ -8,6 +8,7 @@
         <div>
             <p><%= post.createdAt.toLocaleDateString() %></p>
             <p><%= post.content %></p>
+            <a href="/user/<%= user._id %>/posts/<%= post._id%>">Click me to view Specific post</a>
         </div>
     <% }) %>
 </div>

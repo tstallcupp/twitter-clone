@@ -7,15 +7,17 @@
             <button type="submit">SUBMIT ME</button>
         </form>
     <% } %>
-
+    <div class="post">
     <% posts.forEach(function(post) { %>
         <div>POST:</div>
         <article>
             <div><%= post.userName %></div>
             <div><%= post.content %></div>
-            <div><%= post.createdAt.toLocaleDateString() %></div>
+            <div><%= post.createdAt.toLocaleDateString() %>
+            <a href="/posts/<%= post._id %>">Click to View Post</a></div>
         </article>
     <% }) %>
+    </div>
 </div>
 
 <%- include('../partials/footer') %>
