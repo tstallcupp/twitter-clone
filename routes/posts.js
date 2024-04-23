@@ -12,6 +12,8 @@ router.get('/:postId', postsCtrl.show);
 router.get('/', postsCtrl.allPosts);
 // POST /posts/new (Creates new post from home page form)
 router.post('/', postsCtrl.create);
+// POST /posts/:postId/edit (Handle edit/update)
+router.post('/:postId/edit', postsCtrl.update)
 // DELETE /posts/:postId (Deletes specific post)
 router.delete('/:postId', postsCtrl.delete)
 

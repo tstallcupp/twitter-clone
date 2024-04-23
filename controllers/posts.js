@@ -8,7 +8,27 @@ module.exports = {
     create,
     delete: deletePost,
     edit,
+    update,
 }
+
+async function update(req, res) {
+    try {
+        const editedPost = await Post.findByIdAndUpdate(
+        { _id: req.params.postId, 
+            author: req.user._id  
+        },
+        // Update object with updated properties
+        req.body, 
+        // options object { new: true } returns updated doc
+        { new: true }
+    );
+    // Redirect to edited post
+    return res.redirect(`/posts/${ editedPost._id }`);
+    } catch (error) {
+        console.log(error.message);
+        return res.redirect('/posts');
+    }
+};
 
 async function edit(req, res) {
     try {
