@@ -10,10 +10,6 @@ const postSchema = new Schema({
         maxLength: 280,
         required: true
     },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User',
@@ -21,6 +17,8 @@ const postSchema = new Schema({
     },
     userName: String,
     userAvatar: String
+}, {
+    timestamps: true
 });
 
 module.exports = mongoose.model('Post', postSchema);

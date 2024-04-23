@@ -32,6 +32,7 @@ async function show(req, res) {
         if (!post) {
             return res.status(404).send('Post not found');
         }
+        console.log(req.body)
         res.render('posts/show', { title: 'Post Detail', post })
     } catch (error) {
         console.log('Error fetching post', error)

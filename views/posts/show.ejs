@@ -1,6 +1,10 @@
 <%- include('../partials/header') %>
 <div class="container">
     <h2>SHOW EJS</h2>
+    <div class="post">
+        <section>Author: <%= post.userName %></section>
+        <section>Created At: <%= post.createdAt.toLocaleDateString() %></section>
+    </div>
 </div>
 
 <%- include('../partials/footer') %>
