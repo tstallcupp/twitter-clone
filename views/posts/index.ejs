@@ -1,5 +1,7 @@
 <%- include('../partials/header') %>
 <div class="container">
+    <!--* SHOW POST FORM -->
+    <div>
     <% if ( user ) { %>
         <h2>TESTING HOME PAGE</h2>
         <form action="/posts" method="POST">
@@ -7,6 +9,8 @@
             <button type="submit">SUBMIT ME</button>
         </form>
     <% } %>
+    </div>
+    <!--* SHOW ALL POSTS -->
     <div class="post">
     <% posts.forEach(function(post) { %>
         <div>POST:</div>
