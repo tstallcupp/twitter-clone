@@ -7,7 +7,22 @@ module.exports = {
     show,
     create,
     delete: deletePost,
+    edit,
 }
+
+async function edit(req, res) {
+    try {
+        // find the specific post by id
+        const post = await Post.findById(req.params.postId);
+        if (!post) {
+            return res.status(404).send('Post Not Found');
+        }
+        res.render('posts/edit', { title: 'Edit Post', post })
+    } catch (error) {
+        console.log('Error rendering edit form: ', error);
+        res.status(500).send('Internal Server Error');
+    }
+};
 
 async function deletePost(req, res) {
     try{
