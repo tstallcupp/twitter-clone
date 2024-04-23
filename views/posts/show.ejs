@@ -2,8 +2,12 @@
 <div class="container">
     <h2>SHOW EJS</h2>
     <div class="post">
+        <h4><%= post.content%></h4>
         <section>Author: <%= post.userName %></section>
         <section>Created At: <%= post.createdAt.toLocaleDateString() %></section>
+        <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+            <button type="submit">X</button>
+        </form>
     </div>
 </div>
 

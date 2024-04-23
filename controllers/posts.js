@@ -6,7 +6,25 @@ module.exports = {
     allPosts,
     show,
     create,
+    delete: deletePost,
 }
+
+async function deletePost(req, res) {
+    try{
+        const deletedPost = await Post.findOneAndDelete({
+            _id: req.params.postId,
+            author: req.user._id
+        })
+        console.log('post: ', deletedPost)
+        if (!deletedPost) {
+            return res.status(400).send('Post Not Found');
+        }
+        res.redirect('/posts');
+    } catch (error) {
+        console.log('Error deleting post: ', error)
+        res.status(500).send('Internal Server Error');
+    }
+};
 
 async function create(req, res) {
     const { content } = req.body
@@ -18,9 +36,10 @@ async function create(req, res) {
             userName: req.user.name,
             userAvatar: req.user.avatar
         });
-        res.redirect('posts');
+        res.redirect('/posts');
     } catch(error) {
         console.log('Error creating a post: ', error);
+        res.status(500).send('Internal Server Error');
     }
 }
 
