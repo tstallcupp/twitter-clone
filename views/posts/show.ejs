@@ -7,18 +7,39 @@
         <section>Author: <%= post.userName %></section>
         <section>Created At: <%= post.createdAt.toLocaleDateString() %></section>
         </div>
-        <!--* EDIT & DELETE BUTTON -->
+
+        <!--* POST: EDIT & DELETE BUTTON -->
         <div class="action-controls">
-            <form action="/posts/<%= post._id %>/comments" method="POST">
-                <textarea name="content" id="comment" cols="30" rows="10" placeholder="Comment Here"></textarea>
-                <button type="submit">Comment</button>
-            </form>
             <% if (user?._id.equals(post.author)) { %>
                 <a id="edit-link" href="/posts/<%= post._id %>/edit">EDIT POST</a>
                 <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
                     <button type="submit">X</button>
                 </form>
             <% } %>
+        </div>
+
+        <!--* COMMENT INPUT & DISPLAY -->
+        <div class="comments-container">
+            <div class="comment-text">
+                <form action="/posts/<%= post._id %>/comments" method="POST">
+                    <textarea name="content" id="comment" cols="30" rows="10" placeholder="Comment Here"></textarea>
+                    <button type="submit">Comment</button>
+                </form>
+                <div class="comment-display">
+                    <% post.comments.forEach(function(c) { %>
+                        <div><%= c.userName %></div>
+                        <div><%= c.content %></div>
+                        <div><%= c.createdAt.toLocaleDateString() %></div>
+                        
+                        <!--* COMMENT: EDIT & DELETE BUTTON -->
+                        <% if (user?._id.equals(c.author)) { %>
+                            <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
+                                <button type="submit">X</button>
+                            </form>
+                        <% } %>
+                   <% }) %>
+                </div>
+            </div>
         </div>
     </div>
 </div>
