@@ -83,11 +83,9 @@ async function show(req, res) {
     try {
         // find specific post
         const post = await Post.findById(req.params.postId);
-        // console.log(req.params.id)
         if (!post) {
             return res.status(404).send('Post not found');
         }
-        console.log(req.body)
         res.render('posts/show', { title: 'Post Detail', post })
     } catch (error) {
         console.log('Error fetching post', error)

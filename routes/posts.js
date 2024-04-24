@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
+const ensureLoggedIn = require('../config/ensureLoggedIn')
 const postsCtrl = require('../controllers/posts');
 
 //* ALL ROUTES START WITH '/posts'
@@ -13,8 +14,8 @@ router.get('/', postsCtrl.allPosts);
 // POST /posts/new (Creates new post from home page form)
 router.post('/', postsCtrl.create);
 // POST /posts/:postId/edit (Handle edit/update)
-router.post('/:postId/edit', postsCtrl.update)
+router.post('/:postId/edit', ensureLoggedIn,  postsCtrl.update)
 // DELETE /posts/:postId (Deletes specific post)
-router.delete('/:postId', postsCtrl.delete)
+router.delete('/:postId', ensureLoggedIn, postsCtrl.delete)
 
 module.exports = router;
