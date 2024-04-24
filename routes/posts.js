@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const ensureLoggedIn = require('../config/ensureLoggedIn')
+const ensureLoggedIn = require('../config/ensureLoggedIn');
 const postsCtrl = require('../controllers/posts');
 
 //* ALL ROUTES START WITH '/posts'

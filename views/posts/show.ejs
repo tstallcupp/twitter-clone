@@ -1,17 +1,22 @@
 <%- include('../partials/header') %>
 <div class="container">
     <h2>SHOW EJS</h2>
-    <div class="post">
+    <div class="post-container">
+        <div class="post-content">
         <h4><%= post.content%></h4>
         <section>Author: <%= post.userName %></section>
         <section>Created At: <%= post.createdAt.toLocaleDateString() %></section>
-        <!--* DELETE BUTTON -->
-        <% if (user?._id.equals(post.author)) { %>
-            <a href="/posts/<%= post._id %>/edit">EDIT POST</a>
-            <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
-                <button type="submit">X</button>
-            </form>
-        <% } %>
+        </div>
+        <!--* EDIT & DELETE BUTTON -->
+        <div class="action-controls">
+            <form action=""></form>
+            <% if (user?._id.equals(post.author)) { %>
+                <a id="edit-link" href="/posts/<%= post._id %>/edit">EDIT POST</a>
+                <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+                    <button type="submit">X</button>
+                </form>
+            <% } %>
+        </div>
     </div>
 </div>
 
