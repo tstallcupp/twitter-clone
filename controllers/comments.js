@@ -1,5 +1,6 @@
 const Post = require('../models/post');
 const User = require('../models/user');
+const posts = require('./posts');
 
 module.exports = {
     create,
@@ -7,7 +8,17 @@ module.exports = {
 };
 
 async function deleteComment(req, res) {
-    const post = await Post.
+    const post = await Post.findOne({
+        'comments._id' : req.params.id,
+        'comments.author' : req.user._id
+    });
+    if (!post) return res.redirect(`/posts/${post._id}`);
+    // Remove the subdoc through post model
+    post.comments.remove(req.params.id);
+    // Save updated post
+    await post.save();
+    // Redirect to posts show
+    res.redirect(`/posts/${post._id}`);
 };
 
 async function create(req, res) {
