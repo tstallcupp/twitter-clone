@@ -9,7 +9,10 @@
         </div>
         <!--* EDIT & DELETE BUTTON -->
         <div class="action-controls">
-            <form action=""></form>
+            <form action="/posts/<%= post._id %>/comments" method="POST">
+                <textarea name="content" id="comment" cols="30" rows="10" placeholder="Comment Here"></textarea>
+                <button type="submit">Comment</button>
+            </form>
             <% if (user?._id.equals(post.author)) { %>
                 <a id="edit-link" href="/posts/<%= post._id %>/edit">EDIT POST</a>
                 <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
