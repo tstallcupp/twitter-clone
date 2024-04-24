@@ -14,6 +14,7 @@ module.exports = {
 async function update(req, res) {
     try {
         const editedPost = await Post.findByIdAndUpdate(
+        // Verify that the post id matches the user id 
         { _id: req.params.postId, 
             author: req.user._id  
         },
