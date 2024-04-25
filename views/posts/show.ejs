@@ -1,21 +1,23 @@
 <%- include('../partials/header') %>
 <div class="grid-container">
     <h2>SHOW EJS</h2>
-    <div class="post-container"> POST CONTAINER
+    <div class="post-container">
         <div class="post-content">
-        <div><%= post.content%></div>
-        <section>Author: <%= post.userName %></section>
-        <section>Created At: <%= post.createdAt.toLocaleDateString() %></section>
-        
-        <!--* POST: EDIT & DELETE BUTTON -->
-        <div class="action-controls">
-            <% if (user?._id.equals(post.author)) { %>
-                <a id="edit-link" href="/posts/<%= post._id %>/edit">EDIT POST</a>
-                <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
-                    <button type="submit">X</button>
-                </form>
-            <% } %>
+            <div><%= post.content%></div>
+            <section>Author: <%= post.userName %></section>
+            <section>Created At: <%= post.createdAt.toLocaleDateString() %></section>
+            
+            <!--* POST: EDIT & DELETE BUTTON -->
+            <div class="action-controls">
+                <% if (user?._id.equals(post.author)) { %>
+                    <a id="edit-link" href="/posts/<%= post._id %>/edit">EDIT POST</a>
+                    <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+                        <button type="submit">X</button>
+                    </form>
+                <% } %>
+            </div>
         </div>
+    </div>
 
         <!--* COMMENT FORM --->
         <div class="comment-form">
