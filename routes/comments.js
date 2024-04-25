@@ -7,9 +7,9 @@ const commentsCtrl = require('../controllers/comments');
 
 //* ALL ROUTES START WITH '/' (was starting with /posts)
 // POST /posts/:postId/comments (Create a comment on a post)
-router.post('/posts/:postId/comments', commentsCtrl.create);
+router.post('/posts/:postId/comments', ensureLoggedIn, commentsCtrl.create);
 // DELETE /comments/:id (Delete a comment)
-router.delete('/comments/:id', commentsCtrl.delete);
+router.delete('/comments/:id', ensureLoggedIn, commentsCtrl.delete);
 
 
 

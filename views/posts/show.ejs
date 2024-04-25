@@ -3,11 +3,10 @@
     <h2>SHOW EJS</h2>
     <div class="post-container">
         <div class="post-content">
-        <h4><%= post.content%></h4>
+        <div><%= post.content%></div>
         <section>Author: <%= post.userName %></section>
         <section>Created At: <%= post.createdAt.toLocaleDateString() %></section>
-        </div>
-
+        
         <!--* POST: EDIT & DELETE BUTTON -->
         <div class="action-controls">
             <% if (user?._id.equals(post.author)) { %>
@@ -15,7 +14,8 @@
                 <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
                     <button type="submit">X</button>
                 </form>
-            <% } %>
+                <% } %>
+            </div>
         </div>
 
         <!--* COMMENT INPUT & DISPLAY -->

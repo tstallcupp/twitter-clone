@@ -81,18 +81,23 @@ nav > a.active {
   height: 30px;
 }
 
-article {
-  display: grid;
-  border: #424748 solid 3px;
-}
-
-.post {
+.post-container {
   width: 300px;
   height: 70px
 }
 
+.post-content {
+  display: grid;
+  border: #424748 solid 3px;
+}
+
+
 .post a {
   color: #B95CF4;
+}
+
+.action-controls {
+  display: flex;
 }
 /* 
 .container {

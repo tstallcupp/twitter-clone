@@ -3,7 +3,7 @@ const User = require('../models/user');
 
 module.exports = {
     allPosts,
-    show,
+    show: onePost,
     create,
     delete: deletePost,
     edit,
@@ -78,12 +78,15 @@ async function create(req, res) {
     }
 }
 
-async function show(req, res) {
+async function onePost(req, res) {
     try {
         // find specific post
         const post = await Post.findById(req.params.postId);
         if (!post) {
             return res.status(404).send('Post not found');
+        // if the posts has comments, sort them descending    
+        } if (post.comments.length) {
+            post.comments.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
         }
         res.render('posts/show', { title: 'Post Detail', post })
     } catch (error) {

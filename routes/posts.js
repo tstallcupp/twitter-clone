@@ -12,7 +12,7 @@ router.get('/:postId', postsCtrl.show);
 // GET /posts (Views all posts on home page)
 router.get('/', postsCtrl.allPosts);
 // POST /posts/new (Creates new post from home page form)
-router.post('/', postsCtrl.create);
+router.post('/', ensureLoggedIn, postsCtrl.create);
 // POST /posts/:postId/edit (Handle edit/update)
 router.post('/:postId/edit', ensureLoggedIn,  postsCtrl.update)
 // DELETE /posts/:postId (Deletes specific post)

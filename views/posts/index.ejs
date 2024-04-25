@@ -1,5 +1,9 @@
 <%- include('../partials/header') %>
+
 <div class="container">
+    <% if ( !user ) { %>
+        <h2>Not Logged In index</h2>
+    <% } %>
     <!--* SHOW POST FORM -->
     <div>
     <% if ( user ) { %>
@@ -11,15 +15,25 @@
     
     </div>
     <!--* SHOW ALL POSTS -->
-    <div class="post">
+    <div class="post-container">
     <% posts.forEach(function(post) { %>
         <div>POST:</div>
-        <article class="test">
+        <article class="post-content">
             <div><%= post.userName %></div>
             <div><%= post.content %></div>
             <div><%= post.createdAt.toLocaleDateString() %>
             <a href="/posts/<%= post._id %>">Click to View Post</a>
             </div>
+
+             <!--* POST: EDIT & DELETE BUTTON -->
+            <div class="action-controls">
+                <% if (user?._id.equals(post.author)) { %>
+                    <a id="edit-link" href="/posts/<%= post._id %>/edit">EDIT POST</a>
+                    <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+                        <button type="submit">X</button>
+                    </form>
+                    <% } %>
+                </div>
         </article>
     <% }) %>
     </div>
