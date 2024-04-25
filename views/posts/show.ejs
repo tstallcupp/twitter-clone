@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-<div class="container">
+<div class="grid-container">
     <h2>SHOW EJS</h2>
     <div class="post-container"> POST CONTAINER
         <div class="post-content">
@@ -14,19 +14,21 @@
                 <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
                     <button type="submit">X</button>
                 </form>
-                <% } %>
-            </div>
+            <% } %>
         </div>
 
-        <!--* COMMENT INPUT & DISPLAY -->
-        <div class="comments-container">
-            <div class="comment-text">
-                <form action="/posts/<%= post._id %>/comments" method="POST">
-                    <textarea name="content" id="comment" cols="30" rows="10" placeholder="Comment Here"></textarea>
-                    <button type="submit">Comment</button>
-                </form>
-                <div class="comment-display">
-                    <% post.comments.forEach(function(c) { %>
+        <!--* COMMENT FORM --->
+        <div class="comment-form">
+            <form action="/posts/<%= post._id %>/comments" method="POST">
+                <textarea name="content" id="comment" cols="30" rows="10" placeholder="Comment Here"></textarea>
+                <button type="submit">Comment</button>
+            </form>
+        </div>
+            <!--* COMMENT DISPLAY ---->
+        <div>
+            <div class="comment-container">
+                <% post.comments.forEach(function(c) { %>
+                    <div class="comment-content">
                         <div><%= c.userName %></div>
                         <div><%= c.content %></div>
                         <div><%= c.createdAt.toLocaleDateString() %></div>
@@ -37,8 +39,8 @@
                                 <button type="submit">X</button>
                             </form>
                         <% } %>
-                   <% }) %>
-                </div>
+                    </div>
+                <% }) %>
             </div>
         </div>
     </div>
