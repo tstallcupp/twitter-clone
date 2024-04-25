@@ -1,11 +1,11 @@
 <%- include('../partials/header') %>
 
-<div class="container">
+<div class="grid-container">
     <% if ( !user ) { %>
         <h2>Not Logged In index</h2>
     <% } %>
     <!--* SHOW POST FORM -->
-    <div>
+    <div class="post-form">
     <% if ( user ) { %>
         <h2>TESTING HOME PAGE</h2>
         <form action="/posts" method="POST">
@@ -15,8 +15,8 @@
     
     </div>
     <!--* SHOW ALL POSTS -->
-    <div class="post-container">
     <% posts.forEach(function(post) { %>
+        <div class="post-container">
         <div>POST:</div>
         <article class="post-content">
             <div><%= post.userName %></div>
