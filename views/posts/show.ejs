@@ -2,9 +2,8 @@
 <!-- <div class="grid-container"> -->
 <div class="show-container">
     <div id="single-post">
-        <h2>SHOW EJS</h2>
         <div >
-            <div><%= post.content%></div>
+            <div id="text"><%= post.content%></div>
             <section>Author: <%= post.userName %></section>
             <section>Created At: <%= post.createdAt.toLocaleDateString() %></section>
             
