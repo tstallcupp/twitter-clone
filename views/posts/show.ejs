@@ -1,49 +1,51 @@
 <%- include('../partials/header') %>
 <div class="grid-container">
-    <h2>SHOW EJS</h2>
-    <div class="post-container">
-        <div class="post-content">
-            <div><%= post.content%></div>
-            <section>Author: <%= post.userName %></section>
-            <section>Created At: <%= post.createdAt.toLocaleDateString() %></section>
-            
-            <!--* POST: EDIT & DELETE BUTTON -->
-            <div class="action-controls">
-                <% if (user?._id.equals(post.author)) { %>
-                    <a id="edit-link" href="/posts/<%= post._id %>/edit">EDIT POST</a>
-                    <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
-                        <button type="submit">X</button>
-                    </form>
-                <% } %>
+    <div class="main-content">
+        <div id="single-post">
+            <h2>SHOW EJS</h2>
+            <div class="post-content">
+                <div><%= post.content%></div>
+                <section>Author: <%= post.userName %></section>
+                <section>Created At: <%= post.createdAt.toLocaleDateString() %></section>
+                
+                <!--* POST: EDIT & DELETE BUTTON -->
+                <div class="action-controls">
+                    <% if (user?._id.equals(post.author)) { %>
+                        <a id="edit-link" href="/posts/<%= post._id %>/edit">EDIT POST</a>
+                        <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+                            <button type="submit">X</button>
+                        </form>
+                    <% } %>
+                </div>
             </div>
         </div>
-    </div>
 
         <!--* COMMENT FORM --->
-        <div class="comment-form">
+        <div id="comment-form"class="comment-form">
             <form action="/posts/<%= post._id %>/comments" method="POST">
                 <textarea name="content" id="comment" cols="30" rows="10" placeholder="Comment Here"></textarea>
                 <button type="submit">Comment</button>
             </form>
         </div>
-            <!--* COMMENT DISPLAY ---->
-        <div>
-            <div class="comment-container">
-                <% post.comments.forEach(function(c) { %>
-                    <div class="comment-content">
-                        <div><%= c.userName %></div>
-                        <div><%= c.content %></div>
-                        <div><%= c.createdAt.toLocaleDateString() %></div>
-                        
-                        <!--* COMMENT: EDIT & DELETE BUTTON -->
+                <!--* COMMENT DISPLAY ---->
+        
+        <div class="comment-container">
+            <% post.comments.forEach(function(c) { %>
+                <div class="comment-content">
+                    <div><%= c.userName %></div>
+                    <div><%= c.content %></div>
+                    <div><%= c.createdAt.toLocaleDateString() %></div>
+                    
+                    <!--* COMMENT: EDIT & DELETE BUTTON -->
+                    <div class="action-controls">
                         <% if (user?._id.equals(c.author)) { %>
                             <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
                                 <button type="submit">X</button>
                             </form>
                         <% } %>
                     </div>
-                <% }) %>
-            </div>
+                </div>
+            <% }) %>
         </div>
     </div>
 </div>

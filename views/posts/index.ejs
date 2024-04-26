@@ -4,39 +4,41 @@
     <% if ( !user ) { %>
         <h2>Not Logged In index</h2>
     <% } %>
-    <!--* SHOW POST FORM -->
-    <div class="post-form">
-    <% if ( user ) { %>
-        <h2>TESTING HOME PAGE</h2>
-        <form action="/posts" method="POST">
-            <textarea name="content" id="" cols="30" rows="10" placeholder="Enter Text Here"></textarea><br>
-            <button type="submit">SUBMIT ME</button>
-        </form>
-    
-    </div>
-    <!--* SHOW ALL POSTS -->
-    <% posts.forEach(function(post) { %>
-        <div class="post-container">
-        <div>POST:</div>
-        <article class="post-content">
-            <div><%= post.userName %></div>
-            <div><%= post.content %></div>
-            <div><%= post.createdAt.toLocaleDateString() %>
-            <a href="/posts/<%= post._id %>">Click to View Post</a>
+        <div class="main-content">
+            <!--* SHOW POST FORM -->
+            <div id="post-form">
+            <% if ( user ) { %>
+                <h2>TESTING HOME PAGE</h2>
+                <form action="/posts" method="POST">
+                    <textarea name="content" id="" cols="30" rows="10" placeholder="Enter Text Here"></textarea><br>
+                    <button type="submit">SUBMIT ME</button>
+                </form>
+            
             </div>
+            <!--* SHOW ALL POSTS -->
+            <% posts.forEach(function(post) { %>
+                <div id="all-posts">
+                <div>POST:</div>
+                <article class="post-content">
+                    <div><%= post.userName %></div>
+                    <div><%= post.content %></div>
+                    <div><%= post.createdAt.toLocaleDateString() %>
+                    <a href="/posts/<%= post._id %>">Click to View Post</a>
+                    </div>
 
-             <!--* POST: EDIT & DELETE BUTTON -->
-            <div class="action-controls">
-                <% if (user?._id.equals(post.author)) { %>
-                    <a id="edit-link" href="/posts/<%= post._id %>/edit">EDIT POST</a>
-                    <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
-                        <button type="submit">X</button>
-                    </form>
-                    <% } %>
-                </div>
-        </article>
-    <% }) %>
-    </div>
+                    <!--* POST: EDIT & DELETE BUTTON -->
+                    <div class="action-controls">
+                        <% if (user?._id.equals(post.author)) { %>
+                            <a id="edit-link" href="/posts/<%= post._id %>/edit">EDIT POST</a>
+                            <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+                                <button type="submit">X</button>
+                            </form>
+                            <% } %>
+                        </div>
+                </article>
+            <% }) %>
+            </div>
+        </div>
     <% } %>
 </div>
 

@@ -74,7 +74,10 @@ nav > a.active {
   color: white;
   cursor: default;
 }
-
+/*-----TEXT BOX----*/
+textarea {
+  resize: none;
+}
 
 .login {
   display: flex;
@@ -87,35 +90,63 @@ nav > a.active {
   height: 30px;
 }
 
+
 /*-----GRID CONTAINER----*/
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1.5fr 3fr 1fr 1fr;
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   height: 100%;
-  background-color: #B95CF4;
+  background-color: #F5A6E6;
+  overflow: hidden;
 }
-
-/*-----GRID ITEM 3----*/
-.post-form {
+.main-content {
   grid-column: 3;
-  grid-row: 1;
+  grid-row: 1 / 6;
+  height: 100%;
+  overflow-y: auto;
+}
+/*--------------HOME PAGE------------*/
+.post-content {
+  border: #424748 solid 3px;
+  padding: 3px 3px;
+  /* background-color: yellow; */
+}
+/*-----GRID ITEM 3----*/
+#post-form {
+  grid-column: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
   border: 4px solid green;
 }
 
 /*-----GRID ITEM 6----*/
-.post-container {
+#all-posts {
   width: 100%;
-  background-color: grey;
+  background-color: lightgoldenrodyellow;
   grid-column: 3;
-  grid-row: 2 / span 3;
+  grid-row: 2 / span 4;
 }
 
-.post-content {
-  display: grid;
-  border: #424748 solid 3px;
-  padding: 3px 3px;
-  /* background-color: yellow; */
+
+/*--------------DETAILED POST----------*/
+/*-----GRID ITEM 3----*/
+#single-post {
+  width: 100%;
+  background-color: lightgoldenrodyellow;
+  grid-row: 1;
+}
+
+#comment-form {
+  grid-column: 3;
+  grid-row: 2;
+  border: 4px solid green;
+}
+.comment-container {
+  grid-column: 3;
+  grid-row-start: 3;
+  grid-row-end: 6;
+  border: 4px solid lightblue;
 }
 
 
