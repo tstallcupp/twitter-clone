@@ -1,8 +1,9 @@
 <%- include('../partials/header') %>
-<div>
+<div class="edit-container">
     <form action="/posts/<%= post._id %>/edit" method="POST">
-        <textarea name="content" id="" cols="30" rows="10"><%= post.content%></textarea><br>
-        <button type="submit">UPDATE ME</button>
+        <input type="text" class="post-form" name="content" value="<%= post.content%>"></input>
+        <button id="comment-btn" class="btn" type="submit">Post</button>
+        
     </form>
 </div>
 

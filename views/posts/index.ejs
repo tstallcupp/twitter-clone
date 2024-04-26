@@ -8,10 +8,9 @@
             <!--* SHOW POST FORM -->
             <div id="post-form">
             <% if ( user ) { %>
-                <h2>TESTING HOME PAGE</h2>
                 <form action="/posts" method="POST">
-                    <textarea name="content" id="" cols="30" rows="10" placeholder="Enter Text Here"></textarea><br>
-                    <button type="submit">SUBMIT ME</button>
+                    <input type="text" class="post-form" name="content" placeholder="Chirp away"></input><br>
+                    <button class="btn" type="submit">Post</button>
                 </form>
             
             </div>
@@ -20,9 +19,9 @@
             <div id="all-posts">
                 <div>POST:</div>
                 <article class="post-content">
-                    <div><%= post.userName %></div>
-                    <div><%= post.content %></div>
-                    <div><%= post.createdAt.toLocaleDateString() %>
+                    <div>Author: <%= post.userName %></div>
+                    <div id="text"><%= post.content %></div>
+                    <div>Created At: <%= post.createdAt.toLocaleDateString() %>
                     <a href="/posts/<%= post._id %>">Click to View Post</a>
                     </div>
 

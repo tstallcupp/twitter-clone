@@ -1,9 +1,9 @@
 <%- include('../partials/header') %>
 <!-- <div class="grid-container"> -->
-<div class="main-content">
+<div class="show-container">
     <div id="single-post">
         <h2>SHOW EJS</h2>
-        <div class="post-content">
+        <div >
             <div><%= post.content%></div>
             <section>Author: <%= post.userName %></section>
             <section>Created At: <%= post.createdAt.toLocaleDateString() %></section>
@@ -21,10 +21,10 @@
     </div>
 
     <!--* COMMENT FORM --->
-    <div id="comment-form"class="comment-form">
-        <form action="/posts/<%= post._id %>/comments" method="POST">
-            <textarea name="content" id="comment" cols="30" rows="10" placeholder="Comment Here"></textarea>
-            <button type="submit">Comment</button>
+    <div id="post-form">
+        <form class="comment-form" action="/posts/<%= post._id %>/comments" method="POST">
+            <input type="text" class="post-form" name="content" placeholder="Chirp away"></input>
+            <button id="comment-btn" class="btn" type="submit">Post</button>
         </form>
     </div>
             <!--* COMMENT DISPLAY ---->
@@ -32,8 +32,8 @@
     <div class="comment-container">
         <% post.comments.forEach(function(c) { %>
             <div class="comment-content">
-                <div><%= c.userName %></div>
-                <div><%= c.content %></div>
+                <div id="username"><%= c.userName %></div>
+                <div id="text"><%= c.content %></div>
                 <div><%= c.createdAt.toLocaleDateString() %></div>
                 
                 <!--* COMMENT: EDIT & DELETE BUTTON -->

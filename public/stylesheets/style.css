@@ -4,13 +4,17 @@
   font-weight: 500;
   font-style: normal;
   font-size: 16px;
-  --text-primary: #D37676;
+  --text-primary: #ffffe3;
   --text-secondary: #FCFFE0;
-  --bg-primary: #BACD92;
-  --bg-secondary: #75A47F;
+  --bg-primary: #dfbbda;
+  --bg-secondary: #896790;
   --transition-speed: 600ms;
 }
-
+.courgette-regular {
+  font-family: "Courgette", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
 
 * {
   box-sizing: border-box;
@@ -22,6 +26,11 @@
 body, html {
   height: 100%;
   margin: 0;
+  background: rgb(182,184,246);
+  /* background: linear-gradient(180deg, rgba(182,184,246,0.8127626050420168) 0%, rgba(203,248,255,0.8883928571428571) 100%); */
+  background: rgb(20,24,82);
+  background: linear-gradient(184deg, rgba(20,24,82,0.5438550420168067) 28%, rgba(133,89,136,0.2805497198879552) 100%);
+  /* background: linear-gradient(180deg, rgba(20,24,82,1) 0%, rgba(133,89,136,0.47942927170868344) 100%); */
 }
 /*------ scroll bar -----------*/
 .main-content::-webkit-scrollbar {
@@ -39,20 +48,6 @@ body, html {
   border-radius: 20px;
 }
 
-
-/* body > main {
-  grid-area: main;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #E8ECEB;
-  padding: 20px;
-  overflow-y: scroll;
-}
-
-body > main h1:first-child {
-  margin-bottom: 50px;
-} */
 /*-----GRID CONTAINER----*/
 .grid-container {
   display: grid;
@@ -60,8 +55,28 @@ body > main h1:first-child {
   grid-template-rows: repeat(5, 1fr);
   gap: 10px;
   height: 100%;
-  background-color: #a3d4e2;
   overflow: hidden;
+}
+
+.home-container {
+  grid-column: 2 / 5;
+  grid-row: 2 / 5;
+  background-color: yellow;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  height: 700px;
+  justify-items: center;
+  align-items: center;
+}
+.home-icon {
+  background-color: green;
+  height: 80%;
+}
+
+
+.login {
+  background-color: orange;
+
 }
 
 .navbar {
@@ -82,7 +97,8 @@ body > main h1:first-child {
   flex-direction: column;
   align-items: center;
   height: 100%;
-  border: 2px solid black;
+  /* border: 2px solid black; */
+  box-shadow: -18px 16px 23px 3px rgba(34,47,91,0.67);
 }
 
 .nav-item {
@@ -134,14 +150,12 @@ body > main h1:first-child {
 }
 
 .fill-primary {
-  fill: #F27BBD;
+  fill: var(--text-primary);
   transition: var(--transition-speed);
 }
 
 /*------ logo ---------*/
 .logo {
-  /* font-weight: bold; */
-  /* text-transform: uppercase; */
   margin-bottom: 1rem;
   text-align: center;
   color: var(--text-secondary);
@@ -162,9 +176,7 @@ body > main h1:first-child {
 
 
 /*-----TEXT BOX----*/
-textarea {
-  resize: none;
-}
+
 
 .login {
   display: flex;
@@ -177,6 +189,25 @@ textarea {
   height: 30px;
 }
 
+
+
+ form .btn {
+  font-weight: 400;
+  font-size: 16px;
+  font-family: "Quicksand", sans-serif;
+  letter-spacing: 0.2ch;
+  color: #fff;
+  background: linear-gradient(22deg, #303c51db 0%, #6aabd2 70%);
+  padding: 5px 20px;
+  border: none;
+  box-shadow: none;
+  border-radius: 39px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
 .main-content {
   grid-column: 3;
   grid-row: 1 / 6;
@@ -185,41 +216,117 @@ textarea {
   display: flex;
   flex-direction: column;
 }
+#username {
+  text-transform: uppercase;
+}
 
+#text {
+  font-size: 20px;
+  font-weight: 600;
+}
 /*--------------HOME PAGE------------*/
 .post-content {
-  border: #424748 solid 3px;
-  padding: 3px 3px;
-  /* background-color: yellow; */
+  background-color: rgba(255, 255, 255);
+  color: black;
+  margin-top: 10px;
+  border: 4px solid #e2eeff;
+  border-radius: 15px;
+  padding: 1em; 
 }
 /*-----FLEX ITEM----*/
 #post-form {
-  border: 4px solid green;
+  padding: 5px;
   margin: 4px 0;
 }
 
-/*-----FLEX ITEM----*/
-#all-posts {
+.post-form {
   width: 100%;
-  background-color: lightgoldenrodyellow;
+  height: 8rem;
+  font-family: "Courgette", cursive;
+  border: 0;
+  outline: 0;
+  color: rgb(60, 66, 87);
+  background-color: rgba(254, 255, 246, 0.952);
+  box-shadow: rgb(60 66 87 / 16%) 0px 0px 0px 1px;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  padding: 4px 8px;
+  min-height: 28px;
+  vertical-align: middle;
+  transition: background-color .24s,box-shadow .24s;
+  transition-property: background-color, box-shadow;
+  transition-duration: 0.24s, 0.24s;
+  transition-timing-function: ease, ease;
+  transition-delay: 0s, 0s;
+}
+.post-form:focus{
+    box-shadow:  rgb(58 151 212 / 25%) 0px 0px 0px 2px;
 }
 
 
+/*-----FLEX ITEM----*/
+#all-posts, #single-post {
+  width: 100%;
+}
+
 /*--------------DETAILED POST----------*/
+
+.show-container, .edit-container {
+  grid-column: 3;
+  grid-row: 1 / 6;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
 /*-----FLEX ITEM ----*/
 #single-post {
   width: 100%;
-  background-color: lightgoldenrodyellow;
+  background-color: rgba(255, 255, 255);
+  height: 9em;
+  margin-top: 10px;
+  border: 4px solid #fbfd9e;
+  border-radius: 15px;
+  padding: 1em;
 }
 
 #comment-form {
-  border: 4px solid green;
+  width: 100%;
+  height: 9em;
+  font-family: "Courgette", cursive;
+  border: 0;
+  outline: 0;
+  color: rgb(60, 66, 87);
+  background-color: rgba(254, 255, 246, 0.952);
+  box-shadow: rgb(60 66 87 / 16%) 0px 0px 0px 1px;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  padding: 4px 8px;
+  min-height: 28px;
+  vertical-align: middle;
+  transition: background-color .24s,box-shadow .24s;
+  transition-property: background-color, box-shadow;
+  transition-duration: 0.24s, 0.24s;
+  transition-timing-function: ease, ease;
+  transition-delay: 0s, 0s;
 }
+#comment-form:focus{
+    box-shadow:  rgb(58 151 212 / 25%) 0px 0px 0px 2px;
+}
+
 .comment-container {
-  background-color: #c7e8c0;
+  height: 100%;
 }
 .comment-content {
-  border: 4px solid #5c1454;
+  background-color:rgba(255, 255, 255);
+  margin-bottom: 5px;
+  border: 4px solid #442b63;
+  border-radius: 15px;
+  padding: 1em;
 }
 
 
@@ -230,9 +337,3 @@ textarea {
 .action-controls {
   display: flex;
 }
-/* 
-.container {
-  display: grid;
-  grid-template-columns: 40px 50px auto 50px 40px;
-  grid-template-rows: 25% 100px auto;
-} */
