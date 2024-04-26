@@ -2,9 +2,14 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'ChirpHub' });
+  if( !req.isAuthenticated() ) {
+    res.render('index', { title: 'ChirpHub' });
+  }
+  res.redirect('/posts');
+  // res.render('index', { title: 'ChirpHub' });
 });
 
 //* Google OAuth login route
