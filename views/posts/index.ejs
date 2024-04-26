@@ -22,13 +22,13 @@
                     <div>Author: <%= post.userName %></div>
                     <div id="text"><%= post.content %></div>
                     <div>Created At: <%= post.createdAt.toLocaleDateString() %>
-                    <a href="/posts/<%= post._id %>">Click to View Post</a>
+                    <a href="/posts/<%= post._id %>">View Post</a>
                     </div>
 
                     <!--* POST: EDIT & DELETE BUTTON -->
                     <div class="action-controls">
                         <% if (user?._id.equals(post.author)) { %>
-                            <a id="edit-link" href="/posts/<%= post._id %>/edit">EDIT POST</a>
+                            <a id="edit-link" href="/posts/<%= post._id %>/edit">Edit Post</a>
                             <form action="/posts/<%= post._id %>?_method=DELETE" method="POST">
                                 <button type="submit">X</button>
                             </form>
