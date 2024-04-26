@@ -10,7 +10,7 @@ router.get('/:postId/edit', postsCtrl.edit);
 // GET /posts/:postId (View details of a specific post)
 router.get('/:postId', postsCtrl.show);
 // GET /posts (Views all posts on home page)
-router.get('/', postsCtrl.allPosts);
+router.get('/', ensureLoggedIn, postsCtrl.allPosts);
 // POST /posts/new (Creates new post from home page form)
 router.post('/', ensureLoggedIn, postsCtrl.create);
 // POST /posts/:postId/edit (Handle edit/update)
